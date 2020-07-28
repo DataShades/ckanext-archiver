@@ -27,6 +27,12 @@ class ArchiverPlugin(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
     p.implements(p.IPackageController, inherit=True)
 
+    if p.toolkit.check_ckan_version('2.9'):
+        p.implements(p.IClick)
+        def get_commands(self):
+            from ckanext.archiver.cli import get_commands
+            return get_commands()
+
     # IDomainObjectModification
 
     def notify(self, entity, operation=None):

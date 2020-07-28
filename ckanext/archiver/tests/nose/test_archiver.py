@@ -1,3 +1,5 @@
+from __future__ import print_function
+from __future__ import absolute_import
 import logging
 import os
 import shutil
@@ -37,7 +39,7 @@ from ckanext.archiver.tasks import (link_checker,
                                     response_is_an_api_error
                                     )
 
-from mock_remote_server import MockEchoTestServer, MockWmsServer, MockWfsServer
+from .mock_remote_server import MockEchoTestServer, MockWmsServer, MockWfsServer
 
 
 # enable celery logging for when you run nosetests -s
@@ -209,7 +211,7 @@ class TestArchiver(BaseCase):
     def assert_archival_error(self, error_message_fragment, resource_id):
         archival = Archival.get_for_resource(resource_id)
         if error_message_fragment not in archival.reason:
-            print 'ERROR: %s (%s)' % (archival.reason, archival.status)
+            print('ERROR: %s (%s)' % (archival.reason, archival.status))
             raise AssertionError(archival.reason)
 
     def test_file_url(self):

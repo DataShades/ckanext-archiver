@@ -9,6 +9,7 @@ from wsgiref.simple_server import make_server
 import urllib2
 import socket
 import os
+from functools import reduce
 
 
 class MockHTTPServer(object):

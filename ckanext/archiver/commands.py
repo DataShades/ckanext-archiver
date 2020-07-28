@@ -9,7 +9,7 @@ import re
 import shutil
 import itertools
 import ckan.plugins as p
-
+import ckanext.archiver.utils as utils
 from pylons import config
 try:
     from collections import OrderedDict  # from python 2.7
@@ -139,9 +139,7 @@ class Archiver(CkanCommand):
                 return
             self.report(self.args[1], delete=True)
         elif cmd == 'init':
-            import ckan.model as model
-            from ckanext.archiver.model import init_tables
-            init_tables(model.meta.engine)
+            utils.cmd_init()
             self.log.info('Archiver tables are initialized')
         elif cmd == 'migrate-archive-dirs':
             self.migrate_archive_dirs()

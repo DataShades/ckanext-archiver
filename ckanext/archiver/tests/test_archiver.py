@@ -1,4 +1,5 @@
 from __future__ import print_function
+from __future__ import absolute_import
 from future import standard_library
 standard_library.install_aliases()  # noqa
 import logging
@@ -37,7 +38,7 @@ from ckanext.archiver.tasks import (link_checker,
                                     response_is_an_api_error
                                     )
 
-from mock_remote_server import MockEchoTestServer, MockWmsServer, MockWfsServer
+from .mock_remote_server import MockEchoTestServer, MockWmsServer, MockWfsServer
 
 
 # enable celery logging for when you run nosetests -s
